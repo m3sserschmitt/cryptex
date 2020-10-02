@@ -3,7 +3,9 @@
 from argparse import ArgumentParser
 from os.path import abspath
 from get_libs import get_libcryptography
+
 import subprocess
+import getpass
 import json
 import os
 
@@ -20,6 +22,7 @@ configurations = {
         "dist": "",
         "bin": "",
         "assets": "",
+        "user": "",
         "socket": "",
         "controller_pid": "",
         "log_file": ""
@@ -56,10 +59,13 @@ if not cmd_args['defaults']:
 
 PATHS['dist'] = PATHS['root'] + '/dist'
 PATHS['assets'] = PATHS['dist'] + '/assets'
+PATHS['user'] = PATHS['assets'] + '/' + getpass.getuser()
 PATHS['bin'] = PATHS['dist'] + '/bin'
 PATHS['socket'] = PATHS['dist'] + '/daemon.socket'
 PATHS['log_file'] = PATHS['dist'] + '/daemon.log'
 PATHS['controller_pid'] = PATHS['root'] + '/controller.pid'
+
+LIBCRYPTOGRAPHY_DIR = os.path.dirname(os.path.realpath(__name__))
 
 if not cmd_args['defaults']:
     log_file = input('[+] Enter log file path (' + PATHS['log_file'] + ', by default): ')
@@ -71,11 +77,11 @@ if not cmd_args['defaults']:
 print('paths =', json.dumps(configurations['paths'], indent=2), '\n')
 
 ##########################
-## Create required file ##
+## Create required files ##
 ##########################
 
 
-for directory in [PATHS['dist'], PATHS['assets'], PATHS['bin']]:
+for directory in [PATHS['dist'], PATHS['assets'], PATHS['bin'], PATHS['user']]:
     try:
         os.mkdir(directory)
         print('[+] Created directory ', directory, '.', sep='')
@@ -97,12 +103,10 @@ except Exception:
 ## get required libraries ##
 ############################
 
-LIBCRYPTOGRAPHY_DIR = os.path.dirname(os.path.realpath(__name__))
-
 print('[+] Downloading libcryptography source code...')
 try:
     get_libcryptography(LIBCRYPTOGRAPHY_DIR)
 except Exception:
     print('[-] Something went wrong while cloning libcryptography repository.')
     
-print('[+]', 'Now you can build cryptex by typing: \"make all\".')
+print('\n[+] Library compilation should start automatically. Otherwise type \"make deps\"\n')

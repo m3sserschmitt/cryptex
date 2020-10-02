@@ -95,7 +95,7 @@ When you're using the passwords manager, two thing happens in background:
 
 * A second process (also a daemon) called `cryptex` is responsible for cryptographic operations (e.g passwords decryption).
 
-Both of ther terminates when you press `Alt+X`.
+Both of them terminates when you press `Alt+X`.
 
 These hotkeys can be changed in configuration file called `config.json`. Take a look, it's intuitive and easy to do so.
 

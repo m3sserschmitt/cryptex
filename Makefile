@@ -21,3 +21,9 @@ config:
 setup:
 	python3 ./scripts/setup.py
 
+deps:
+	cd cryptography && make
+
+clean_deps:
+	cd cryptography && make clean
+

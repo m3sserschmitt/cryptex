@@ -19,6 +19,8 @@
     "clean": true,
     "custom_targets": {
         "config": "python3 ./scripts/config.py -defaults -out config.json && cd cryptography && make",
-        "setup": "python3 ./scripts/setup.py"
+        "setup": "python3 ./scripts/setup.py",
+        "deps": "cd cryptography && make",
+        "clean_deps": "cd cryptography && make clean"
     }
 }
