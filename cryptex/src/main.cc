@@ -1,5 +1,6 @@
 #include "../include/cryptex.h"
 #include "../include/util.h"
+#include "../include/help.h"
 
 #include <string.h>
 
@@ -10,9 +11,9 @@ int main(int argc, char **argv)
 {
     PLAINTEXT *argv_end = argv + argc;
 
-    if (cmd_option_exists(argv, argv_end, "-h"))
+    if (cmd_option_exists(argv, argv_end, "-help"))
     {
-        // cout << "help" << endl;
+        printf("%s\n", help);
         return EXIT_SUCCESS;
     }
 

@@ -47,7 +47,10 @@ Done!
 After the building process is done, you have to accomplish a couple of additional steps in order to use this project as a passwords manager.
 
 Let's say you want to set a password for domain `example.com`.
-Create a file called `example.com` into `./dist/assets/your_username` (path is relative to your local repository, so make sure you perform this steps in your local repository directory) that contains your password for this site.
+
+*_Method 1:_*
+
+Create a file called `example.com` into `./dist/assets/your_username` (path is relative to your local repository, so make sure you perform this steps in your local repository directory) which contains your passwords.
 
 Use the following command:
 
@@ -59,9 +62,15 @@ You will be prompted to enter a password (this will be your master password, so 
 
 Next time you want to set a password for another domain, you have to proceed the same (make sure to enter the same master password).
 
+*_Method 2:_*
+
+Run script `add_password.sh` from local repository and follow instructions.
+
+*_Usage:_*
+
 Now, let's consider the case you want to login on `example.com` site. Click on Cryptex icon and enter your master password. Usually, a login process involves a username and a password. Enter your username. After that, select the domain name (in you address bar, for example), press `Ctrl+C`, in order to copy this domain name into clipboard. Click in the password field to focus, and press `Alt+C`. Your password should now appear.
 
-Keep in mind that you can use your username as an identifier for your password instead of domain name (Actually, you can use anything you want). If you do so, you only have to replace the domain name in previous instructions with whatever identifier you'd like.
+Keep in mind that you can use your username as an identifier for your password instead of domain name (actually, you can use anything you want). If you do so, you only have to replace `example.com` in previous instructions with whatever identifier you'd like.
 
 ### Cryptography tool.
 

@@ -23,5 +23,7 @@ with open('cryptex.desktop', 'w') as file:
     file.write(desktop_entry)
     file.close()
 
-shutil.copyfile('./cryptex.desktop', '/home/rujas/.local/share/applications/cryptex.desktop')
+shutil.copyfile('./cryptex.desktop', os.path.expanduser('~') + '/.local/share/applications/cryptex.desktop')
 print('[+] Desktop entry created.')
+
+os.system('chmod +x ./*.sh')
