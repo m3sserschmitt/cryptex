@@ -1,0 +1,13 @@
+{
+  "hotkeys": {
+    "get": "<alt>+c",
+    "stop": "<alt>+x"
+  },
+  "paths": {
+    "assets": "./data/assets",
+    "log_file": "./data/daemon.log",
+    "pid": "./data/controller.pid",
+    "cryptutil": "/usr/local/bin/cryptutil"
+  },
+  "daemonize_controller": true
+}

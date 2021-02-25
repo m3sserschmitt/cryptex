@@ -1,9 +1,5 @@
 .idea
 .vscode
-dist
-config.json
-*__pycache__
-*.desktop
-*.pid
-cryptography
 *.o
+cryptex.desktop
+data/assets

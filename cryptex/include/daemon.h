@@ -1,1 +1,0 @@
-int service_daemon(char **argv, char **argv_end);

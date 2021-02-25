@@ -1,0 +1,28 @@
+{
+  "TARGET": "cryptutil",
+  "CC": "g++",
+  "LD": "g++",
+  "C_FLAGS": [
+    "-c",
+    "-Wall"
+  ],
+  "LD_FLAGS": [],
+  "LIBS": [
+    "cryptography"
+  ],
+  "INCLUDE_PATHS": [
+      "./include",
+      "/usr/local/include/libcryptography"
+  ],
+  "EXTENSIONS": [
+    "cc"
+  ],
+  "IGNORE_PATHS": [],
+  "CUSTOM_TARGETS": {
+    "install": "cp ./cryptutil /usr/local/bin/cryptutil"
+  },
+  "VERBOSE": false,
+  "RM": "rm -v",
+  "BUILD_DIRECTORY": "./build",
+  "BIN_DIRECTORY": "./build"
+}
