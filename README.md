@@ -33,7 +33,7 @@ Then:
 Type:
 
 ```
-cd cryptutil
+cd cryptutil/build
 make
 ```
 
@@ -49,7 +49,7 @@ basic cryptographic operations.
 Next command should be ran as regular user (not root). It creates a desktop icon and some files & directories:
 
 ```
-cd ..
+cd ../../
 python3 ./setup.py
 ```
 
