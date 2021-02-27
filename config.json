@@ -6,7 +6,7 @@
   "paths": {
     "assets": "./data/assets",
     "log_file": "./data/daemon.log",
-    "pid": "./data/controller.pid",
+    "pid": "/tmp/cryptex/cryptex_controller.pid",
     "cryptutil": "/usr/local/bin/cryptutil"
   },
   "daemonize_controller": true

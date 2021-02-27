@@ -53,11 +53,14 @@ cd ../../
 python3 ./setup.py
 ```
 
-Run, once again as root:
+In order to make all files read-only, you can run following commands as root (optional, but recommended):
 
-`./secure.sh`
+```
+chattr -VR +iu /path/to/local/repository
+chattr -V -iu /path/to/local/repository/data/daemon.log
+```
 
-This one will change attributes for files located in `./controller/` and also for `config.json` to *imutable*.
+Last two commands will change attributes for all files located in local repository as *imutable* and *undeleteble*, excepting `./data/daemon.log`, to allow program to write logs.
 
 Done!
 
@@ -73,13 +76,13 @@ Run as root:
 
 `python3 ./addpwd.py`
 
-You will be prompted to enter a password , then to confirm the password. After that you will be prompted to enter *Master Password* (__keep it safe__ and make sure to __remember__ it in the future).
+You will be prompted to enter a password, to confirm the password and to add a password identifier (`example.com`, in this example). After that you will be prompted to enter *Master Password* (__keep it safe__ and make sure to __remember__ it in the future!).
 
-Next time you want to set a password for another domain, you have to proceed the same (make sure to enter the __same master password__).
+Next time you want to set a password for another domain, you have to proceed the same (make sure to enter the __same *Master Password*__).
 
 *_Usage:_*
 
-Now, let's consider the case you want to login on `example.com` site. Click on Cryptex icon and enter your master password. Usually, a login process involves a username and a password. Enter your username. After that, select the domain name (in you address bar, for example), press `Ctrl+C`, in order to copy this domain name into clipboard. Click the password field to focus, and press `Alt+C`. Your password should now appear.
+Now, let's consider the case you want to login on `example.com` site. Click on Cryptex icon and enter your master password. Usually, a login process involves a username and a password. Enter your username. After that, select the domain name (in you address bar, for example), press `Ctrl+C`, to copy this domain name into clipboard. Click the password field to focus, and press `Alt+C`. Your password should now appear.
 
 Keep in mind that you can use your username as an identifier for your password instead of domain name (actually, you can use anything you want). If you do so, you only have to replace `example.com` in previous instructions with whatever identifier you'd like.
 

@@ -2,4 +2,4 @@
 .vscode
 *.o
 cryptex.desktop
-data/assets
+data

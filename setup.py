@@ -28,5 +28,6 @@ os.system('cp -v ./cryptex.desktop ~/.local/share/applications/cryptex.desktop')
 
 os.system('mkdir -p -v ./data')
 os.system('mkdir -p -v ./data/assets')
+os.system('mkdir -p -v /tmp/cryptex')
 
 os.system('chmod -v +x ./*.sh')
