@@ -3,3 +3,4 @@
 *.o
 cryptex.desktop
 data
+*__pycache__

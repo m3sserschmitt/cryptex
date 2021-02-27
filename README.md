@@ -57,7 +57,7 @@ In order to make all files read-only, you can run following commands as root (op
 
 ```
 chattr -VR +iu /path/to/local/repository
-chattr -V -iu /path/to/local/repository/data/daemon.log
+chattr -V -i /path/to/local/repository/data/daemon.log
 ```
 
 Last two commands will change attributes for all files located in local repository as *imutable* and *undeleteble*, excepting `./data/daemon.log`, to allow program to write logs.

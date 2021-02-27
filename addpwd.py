@@ -20,7 +20,8 @@ with open('./config.json', 'r') as cfgfile:
     configuration = json.load(cfgfile)
     cfgfile.close()
 
-    out_file = configuration['paths']['assets'].rstrip('/') + '/' + identifier
+    assets = configuration['paths']['assets'].rstrip('/')
+    out_file = assets + '/' + identifier
     cryptutil = configuration['paths']['cryptutil']
     
     if os.path.exists(out_file):
@@ -32,7 +33,7 @@ with open('./config.json', 'r') as cfgfile:
         if answer == 'n':
             exit(0)
 
-        os.system('chattr -i ' + out_file)
+        os.system('chattr -iu ' + out_file)
     
     master_password = getpass.getpass('Enter Master Password: ')
     print()
@@ -43,6 +44,8 @@ with open('./config.json', 'r') as cfgfile:
         '-out', out_file
         ]
 
+    os.system('chattr -V -iu ' + assets)
+
     process = subprocess.Popen(command,
                                stdin=subprocess.PIPE,
                                stdout=subprocess.PIPE,
@@ -52,6 +55,7 @@ with open('./config.json', 'r') as cfgfile:
     output = process.communicate(
         input=(master_password + '\000' + password).encode())[0].decode('utf-8')
         
-    os.system('chattr +i ' + out_file)
+    os.system('chattr -V +iu ' + out_file)
+    os.system('chattr -V +iu ' + assets)
 
     print(output, end='')
