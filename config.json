@@ -7,9 +7,9 @@
     "data": "./data",
     "assets": "./data/assets",
     "log_file": "./data/daemon.log",
-    "tmp": "/tmp/cryptex",
-    "pid": "/tmp/cryptex/cryptex_controller.pid",
+    "tmp": "/tmp",
+    "pid": "/tmp/cryptex_controller.pid",
     "cryptutil": "/usr/local/bin/cryptutil"
   },
-  "daemonize_controller": true
+  "daemon": true
 }

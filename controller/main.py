@@ -26,9 +26,9 @@ except FileNotFoundError:
 config['password'] = getpass.getpass()
 controller = cryptex_controller.Controller(**config)
 
-if config['daemonize_controller']:
+if config['daemon']:
     Daemonize(app="cryptex-controller",
-    pid=config['paths']['pid'],
-    action=controller.start, chdir=os.path.abspath('./')).start()
+              pid=config['paths']['pid'],
+              action=controller.start, chdir=os.path.abspath('./')).start()
 else:
     controller.start()

@@ -16,7 +16,7 @@ You need OpenSSL library to be installed on your machine. Type this command in y
 
 If you see something similar to this: `OpenSSL 1.1.1g  21 Apr 2020`, it means that you have OpenSSL installed, otherwise if an error message is shown, you have to install the library in order to compile this project. Checkout [OpenSSL](https://www.openssl.org/) site for details. Usually, this library is installed on most Linux distros.
 
-Firt of all, we need an extra library called `libcryptography.so`. Checkout [cryptography](https://github.com/m3sserschmitt/cryptography.git) for details.
+First of all, we need an extra library called `libcryptography.so`. Checkout [cryptography](https://github.com/m3sserschmitt/cryptography.git) for details.
 
 
 ### Installing
@@ -60,7 +60,7 @@ chattr -VR +iu /path/to/local/repository
 chattr -V -i /path/to/local/repository/data/daemon.log
 ```
 
-Last two commands will change attributes for all files located in local repository as *imutable* and *undeleteble*, excepting `./data/daemon.log`, to allow program to write logs.
+Last two commands will change attributes for all files located in local repository as *immutable* and *undeletable*, excepting `./data/daemon.log`, to allow program to write logs.
 
 Done!
 

@@ -2,9 +2,9 @@
 
 import os
 import datetime
-import clipboard
 import subprocess
 from pynput import keyboard
+import pyperclip
 
 
 class Controller:
@@ -43,7 +43,7 @@ class Controller:
 
     def is_daemon(self) -> bool:
         try:
-            return self.__args['daemonize_controller']
+            return self.__args['daemon']
         except KeyError:
             return False
 
@@ -56,20 +56,34 @@ class Controller:
         exit()
 
     def get(self):
-        command = [self.get_cryptutil(), '-decrypt', '-silent',
-                   '-log', self.get_log_file()]
+        # read clipboard
+        clipboard = pyperclip.paste()
 
-        process = subprocess.Popen(
-            command,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT
-        )
+        # if clipboard empty, return
+        if not clipboard:
+            return
 
-        asset = self.get_assets_dir() + clipboard.paste()
+        # get asset path
+        asset = self.get_assets_dir() + clipboard
 
         try:
+            # try to open file
             with open(asset, 'rb') as filep:
+                # if successful, clear clipboard
+                pyperclip.copy('')
+
+                # run command
+                command = [self.get_cryptutil(), '-decrypt', '-silent',
+                           '-log', self.get_log_file()]
+
+                process = subprocess.Popen(
+                    command,
+                    stdin=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.STDOUT
+                )
+
+                # get back result
                 result = process.communicate(
                     input=self.__args['password'].encode(
                         'utf-8') + b'\000' + filep.read(1024)
@@ -78,7 +92,7 @@ class Controller:
                 keyboard.Controller().type(result.decode('utf-8'))
 
         except Exception as ex:
-            self.__log('[-] Exception eccured:' + str(ex))
+            self.__log('[-] Exception occurred:' + str(ex))
 
     def __log(self, data: str) -> None:
         now = datetime.datetime.now()
@@ -107,4 +121,4 @@ class Controller:
         except KeyError:
             self.__log('[-] ERROR: some required configurations are missing.')
         except Exception:
-            self.__log('[-] Unknown Exception Occured')
+            self.__log('[-] Unknown Exception Occurred')

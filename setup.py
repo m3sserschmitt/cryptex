@@ -28,6 +28,8 @@ with open('./cryptex.desktop', 'w') as file:
 
 os.system('cp -v ./cryptex.desktop ~/.local/share/applications/cryptex.desktop')
 
+for dependency in ['pynput', 'daemonize']:
+    os.system('pip3 install ' + dependency)
 
 with open('./config.json', 'r') as cfgfile:
     configuration = json.load(cfgfile)
@@ -36,11 +38,11 @@ with open('./config.json', 'r') as cfgfile:
     data = configuration['paths']['data']
     assets = configuration['paths']['assets']
     log_file = configuration['paths']['log_file']
-    tmp = configuration['paths']['tmp']
+    # tmp = configuration['paths']['tmp']
 
     os.system('mkdir -p -v ' + data)
     os.system('mkdir -p -v ' + assets)
-    os.system('mkdir -p -v ' + tmp)
+    # os.system('mkdir -p -v ' + tmp)
 
     os.system('touch ' + log_file)
 
